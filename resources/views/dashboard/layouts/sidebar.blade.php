@@ -13,6 +13,18 @@
             User
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/quiz-1*') ? 'active' : '' }}" href="/dashboard/quiz-1">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            Quiz Matematika
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/quiz-2*') ? 'active' : '' }}" href="/dashboard/quiz-2">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            Quiz Biologi
+          </a>
+        </li>
       </ul>
     </div>
   </nav>

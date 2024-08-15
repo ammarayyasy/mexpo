@@ -16,17 +16,21 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
-        // FacadesLog::info('Credentials:', $credentials); 
-
+    
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('/dashboard');
+    
+            $user = Auth::user();
+    
+            if ($user->hasRole('admin')) {
+                return redirect()->intended('/dashboard');
+            } else {
+                return redirect()->intended('/');
+            }
         }
-
+    
         return back()->with('loginError', 'Login Failed!');
-    }
+    }    
 
     public function logout()
     {

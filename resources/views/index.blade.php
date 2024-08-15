@@ -3,12 +3,13 @@
 @section('main')
 
     @if(session()->has('success'))
-    <div class="alert alert-success  col-lg-9" role="alert">
+    <div class="alert alert-success  col-lg-12" role="alert">
         {{ session('success') }}
     </div>
     @endif
+    <h1 class="text-center">Halo</h1>
     <div class="d-flex justify-content-around">
-        <h1>Halo</h1>
+        
         @auth
             @if ($quiz)
                 <div class="card" style="width: 18rem;">

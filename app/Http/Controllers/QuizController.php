@@ -31,7 +31,7 @@ class QuizController extends Controller
         // Mencatat percobaan baru di tabel user_quiz_attempts
         $attempt = UserQuizAttempt::create([
             'user_id' => $user->id,
-            'quiz_id' => $id, // Menggunakan $id dari parameter
+            'quiz_id' => $id, 
             'attempted_at' => now(),
         ]);
     
@@ -45,27 +45,27 @@ class QuizController extends Controller
             $correctAnswer = $question->choices()->where('is_correct', true)->first();
     
             if ($submittedAnswerId == $correctAnswer->id) {
-                $score++;
+                $score += $question->weight; // Tambahkan bobot ke skor
             }
     
             // Simpan jawaban pengguna ke database
             Answer::create([
                 'user_id' => $user->id,
-                'quiz_id' => $id, // Menggunakan $id dari parameter
+                'quiz_id' => $id, 
                 'question_id' => $question->id,
                 'choice_id' => $submittedAnswerId,
-                'user_quiz_attempt_id' => $attempt->id, // Menghubungkan jawaban dengan percobaan
+                'user_quiz_attempt_id' => $attempt->id, 
             ]);
         }
     
         // Simpan hasil kuis ke database
         Result::create([
             'user_id' => $user->id,
-            'quiz_id' => $id, // Menggunakan $id dari parameter
+            'quiz_id' => $id, 
             'score' => $score,
-            'user_quiz_attempt_id' => $attempt->id, // Menghubungkan hasil dengan percobaan
+            'user_quiz_attempt_id' => $attempt->id, 
         ]);
     
         return redirect('/')->with('success', 'Quiz submitted successfully! Your score is ' . $score);
-    }    
+    }       
 }

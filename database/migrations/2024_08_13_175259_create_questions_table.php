@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
             $table->text('question');
+            $table->decimal('weight', 8, 2);
             $table->timestamps();
         });
     }
