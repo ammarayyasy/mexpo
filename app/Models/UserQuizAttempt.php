@@ -25,4 +25,9 @@ class UserQuizAttempt extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
+    public function results()
+    {
+        return $this->hasOne(Result::class);
+    }
 }

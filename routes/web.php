@@ -36,6 +36,11 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(['auth', 'admin'])->g
     Route::resource('user', UserController::class);
     
     Route::get('/quiz-1', [ReviewController::class, 'quiz1']);
+    Route::get('review1/{id}', [ReviewController::class, 'show1']);
+    Route::delete('review1/{id}', [ReviewController::class, 'destroy1']);
+
     Route::get('/quiz-2', [ReviewController::class, 'quiz2']);
+    Route::get('review2/{id}', [ReviewController::class, 'show2']);
+    Route::delete('review2/{id}', [ReviewController::class, 'destroy2']);
 
 });
