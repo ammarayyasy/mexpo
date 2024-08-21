@@ -16,7 +16,9 @@
                 @foreach ($answer->question->choices as $choice)
                     <li class="list-group-item">
                         {{ $choice->choice_text }}
-                        @if ($choice->id == $answer->choice_id)
+                        @if (is_null($answer->choice_id))
+                            <span class="badge bg-secondary">Tidak Dijawab</span>
+                        @elseif ($choice->id == $answer->choice_id)
                             <span class="badge bg-{{ $choice->is_correct ? 'success' : 'danger' }}">
                                 {{ $choice->is_correct ? 'Correct' : 'Wrong' }}
                             </span>
@@ -29,4 +31,5 @@
 
     <a href="/dashboard/quiz-1" class="btn btn-primary">Back to Review</a>
 </div>
+
 @endsection

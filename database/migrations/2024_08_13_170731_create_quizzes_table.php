@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            // $table->integer('time_limit')->default(60);
+            $table->integer('time_limit')->nullable();
             $table->timestamps();
         });
     }

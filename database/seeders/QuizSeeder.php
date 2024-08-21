@@ -15,10 +15,12 @@ class QuizSeeder extends Seeder
     {
         Quiz::create([
             'title' => 'Quiz Matematika',
+            'time_limit' => 1
         ]);
 
         Quiz::create([
             'title' => 'Quiz Biologi',
+            'time_limit' => 1
         ]);
     }
 }
